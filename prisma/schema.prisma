@@ -1,0 +1,111 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String? @db.ObjectId
+  type  String
+  provider  String
+  providerAccountId String
+  refresh_token String?
+  access_token String?
+  expires_at Int?
+  token_type String?
+  scope String?
+  id_token String?
+  session_state String?
+
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String? @db.ObjectId
+  expires      DateTime
+  user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+   id     String @id @default(auto()) @map("_id") @db.ObjectId
+   name   String?
+   email String @unique
+   hashedPassword String?
+
+
+
+   accounts Account[]
+   sessions Session[]
+   products Product[]
+}
+
+model Product {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  category String
+  name   String
+  description String
+  features Feature[]
+  inTheBox Box[]
+  productPhotosMobile MobilePhoto[]
+  productPhotosDesktop DesktopPhoto[]
+  productPhotosTablet TabletPhoto[]
+  categoryImageSizes CatergoryImage[]
+  price  String
+  userId String? @db.ObjectId
+  user   User? @relation(fields: [userId], references: [id])
+}
+
+model Feature {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  featureDesc String
+  productId String? @db.ObjectId
+  product Product? @relation(fields: [productId], references: [id])
+}
+
+model Box {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  amount String
+  productId String? @db.ObjectId
+  product Product? @relation(fields: [productId], references: [id])
+}
+
+model MobilePhoto {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  url String
+  productId String? @db.ObjectId
+  product Product? @relation(fields: [productId], references: [id])
+}
+
+model DesktopPhoto {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  url String
+  productId String? @db.ObjectId
+  product Product? @relation(fields: [productId], references: [id])
+}
+
+model TabletPhoto {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  url String
+  productId String? @db.ObjectId
+  product Product? @relation(fields: [productId], references: [id])
+}
+
+model CatergoryImage {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  mobileUrl String
+  tabletUrl String
+  desktopUrl String
+  productId String? @db.ObjectId
+  product Product? @relation(fields: [productId], references: [id])
+}

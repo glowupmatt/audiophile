@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import CategoryList from "./clientSideComponents/CategoryList";
+import HeroImage from "./clientSideComponents/HeroImage";
+import BannerAds from "./clientSideComponents/BannerAds";
 
 export default function Home() {
   return (
     <main className="">
-      <div className="relative w-full h-[30rem]">
-        <Image
-          alt="header image"
-          src="/content/home/mobile/image-header.jpg"
-          fill
-        />
+      <HeroImage />
+      <div className="p-6">
+        <CategoryList />
+        <BannerAds />
       </div>
     </main>
   );

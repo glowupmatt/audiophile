@@ -25,7 +25,7 @@ export const categoriesArray = [
 const CategoryList = (props: Props) => {
   return (
     <section className="py-[7.5rem]">
-      <div className="flex flex-col gap-[4rem]">
+      <div className="flex flex-col gap-[4rem] md:flex-row md:gap-[1rem]">
         {categoriesArray.map((category) => {
           return (
             <Link

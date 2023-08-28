@@ -13,9 +13,11 @@ const NavBar = (props: Props) => {
   console.log(cartOpened);
   return (
     <div>
-      <nav className="bg-black w-full flex justify-between items-center p-4">
+      <nav className="bg-black w-full flex justify-between items-center p-4 md:gap-[3rem]">
         <NavHandler navOpen={navOpen} setNavOpen={setNavOpen} />
-        <h2 className="text-white text-[1.5rem] font-bold">audiophile</h2>
+        <h2 className="text-white text-[1.5rem] font-bold md:self-center md:w-full">
+          audiophile
+        </h2>
         <button onClick={() => setCartOpened((prev) => !prev)}>
           <ShoppingCartIcon sx={{ color: blue[50] }} />
         </button>

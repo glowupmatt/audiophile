@@ -55,30 +55,39 @@ const BannerAds = (props: Props) => {
   ];
   return (
     <div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 md:">
         {bannerAdsArray.map((bannerAd, index) => {
           return (
             <div key={bannerAd.name}>
               {index === 0 ? (
-                <div className="p-4 bg-orange-default w-full h-[37.5rem] flex flex-col justify-center items-center rounded-lg relative">
-                  <div className="flex flex-col justify-center items-center absolute p-4 mb-[3rem]">
+                <div className="p-4 bg-orange-default w-full h-[37.5rem] flex flex-col justify-center items-center rounded-lg relative md:h-[45rem] md:w-full">
+                  <div className="flex flex-col justify-center items-center absolute p-4 mb-[3rem] md:gap-[4rem]">
                     <div className="relative flex justify-center items-center">
                       <Image
                         src={bannerAd.imageSizes.mobile.link}
                         alt=""
                         width={150}
                         height={150}
-                        className="absolute"
+                        className="absolute md:hidden"
                       />
                       <Image
-                        src={"/content/home/desktop/pattern-circles.svg"}
+                        src={bannerAd.imageSizes.tablet.link}
                         alt=""
-                        width={279}
-                        height={279}
+                        width={150}
+                        height={150}
+                        className="absolute hidden md:block lg:hidden"
                       />
+                      <div className="w-full">
+                        <Image
+                          src={"/content/home/desktop/pattern-circles.svg"}
+                          alt=""
+                          width={197.212}
+                          height={237}
+                        />
+                      </div>
                     </div>
-                    <div className="flex flex-col gap-4 items-center justify-center text-center w-[17rem]">
-                      <h3 className="font-[700] text-[2.25rem] text-white w-[80%]">
+                    <div className="flex flex-col gap-4 items-center justify-center text-center w-[17rem] md:gap-[2rem] md:w-[51%]">
+                      <h3 className="font-[700] text-[2.25rem] text-white w-[80%] md:text-[3.5rem] md:leading-[4rem]">
                         {bannerAd.name}
                       </h3>
                       <p className="text-white opacity-[.8]">
@@ -101,19 +110,33 @@ const BannerAds = (props: Props) => {
                     alt=""
                     width={529}
                     height={367}
-                    className="rounded-lg"
+                    className="rounded-lg md:hidden"
+                  />
+                  <Image
+                    src={bannerAd.imageSizes.tablet.link}
+                    alt=""
+                    width={761.494}
+                    height={527}
+                    className="rounded-lg hidden md:block lg:hidden"
                   />
                 </div>
               ) : (
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 md:flex-row md:h-[20rem]">
                   <Image
                     src={bannerAd.imageSizes.mobile.link}
                     alt=""
                     width={529}
                     height={367}
-                    className="rounded-lg"
+                    className="rounded-lg md:hidden"
                   />
-                  <div className="flex flex-col gap-4 items-start justify-center text-start w-full h-[12.5rem] p-[2rem] bg-gray rounded-lg">
+                  <Image
+                    src={bannerAd.imageSizes.tablet.link}
+                    alt=""
+                    width={459.244}
+                    height={577.247}
+                    className="rounded-lg hidden md:block lg:hidden"
+                  />
+                  <div className="flex flex-col gap-4 items-start justify-center text-start w-full h-[12.5rem] p-[2rem] bg-gray rounded-lg md:h-full md:w-[21.1875rem]">
                     <h3 className="font-[700] text-[1.75rem] text-black">
                       {bannerAd.name}
                     </h3>

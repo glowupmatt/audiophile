@@ -4,6 +4,7 @@ import classNames from "classnames";
 import NavHandler from "./NavHandler";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { blue } from "@mui/material/colors";
+import Link from "next/link";
 
 type Props = {};
 
@@ -15,9 +16,12 @@ const NavBar = (props: Props) => {
     <div>
       <nav className="bg-black w-full flex justify-between items-center p-4 md:gap-[3rem]">
         <NavHandler navOpen={navOpen} setNavOpen={setNavOpen} />
-        <h2 className="text-white text-[1.5rem] font-bold md:self-center md:w-full">
+        <Link
+          href={"/"}
+          className="text-white text-[1.5rem] font-bold md:self-center md:w-full"
+        >
           audiophile
-        </h2>
+        </Link>
         <button onClick={() => setCartOpened((prev) => !prev)}>
           <ShoppingCartIcon sx={{ color: blue[50] }} />
         </button>

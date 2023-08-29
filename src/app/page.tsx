@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main className="">
       <HeroImage />
-      <div className="p-6">
+      <div className="p-6 lg:px-[10rem] lg:py-6">
         <CategoryList />
         <BannerAds />
       </div>

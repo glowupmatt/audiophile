@@ -10,6 +10,18 @@ export const GET = async (
       where: {
         id: params.productId,
       },
+      select: {
+        category: true,
+        name: true,
+        description: true,
+        price: true,
+        features: true,
+        inTheBox: true,
+        productPhotosMobile: true,
+        productPhotosDesktop: true,
+        productPhotosTablet: true,
+        categoryImageSizes: true,
+      },
     });
 
     return NextResponse.json(product);

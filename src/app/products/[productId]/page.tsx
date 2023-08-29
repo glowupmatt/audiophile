@@ -3,9 +3,15 @@
 import LoadingState from "@/app/clientSideComponents/loadingStates/LoadingState";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-// import { sampleData } from "@/sampleData";
+import { sampleData } from "@/sampleData";
 import { ProductTypes } from "@/sampleData";
-import { currencyFormatter } from "@/helperFunctions";
+import { useRouter } from "next/navigation";
+import { ProductMainInfo } from "@/app/clientSideComponents/productPageComps/ProductMainInfo";
+import Features from "@/app/clientSideComponents/productPageComps/Features";
+import InTheBox from "@/app/clientSideComponents/productPageComps/InTheBox";
+import ProductImages from "@/app/clientSideComponents/productPageComps/ProductImages";
+import RecommendationComp from "@/app/clientSideComponents/productPageComps/RecommendationComp";
+import CategoryList from "@/app/clientSideComponents/CategoryList";
 
 type Props = {
   params: {
@@ -19,6 +25,7 @@ const ProductPage = (props: Props) => {
     params: { productId },
   } = props;
   // const product: ProductTypes = sampleData;
+  const router = useRouter();
   const [product, setProduct] = useState<ProductTypes>();
 
   useEffect(() => {
@@ -33,52 +40,23 @@ const ProductPage = (props: Props) => {
       console.log(error);
     }
   }, [productId]);
-
-  console.log(product);
   if (!product) {
     return <LoadingState />;
   } else {
     return (
-      <div>
-        <Image
-          alt=""
-          src={product.productPhotosMobile[0].url}
-          width={327}
-          height={327}
-        />
-        <h2>{product.name}</h2>
-        <p>{product.description}</p>
-        <p>{currencyFormatter(product.price)}</p>
-        <div>
-          <h3>Features</h3>
-          {product.features.map((feature, index) => (
-            <div key={index}>
-              <p>{feature.featureDesc}</p>
-            </div>
-          ))}
-        </div>
-        <div>
-          <h3>In the box</h3>
-          {product.inTheBox.map((item, index) => (
-            <div key={index}>
-              <p>{item.amount}x</p>
-              <p>{item.name}</p>
-            </div>
-          ))}
-        </div>
-        <div>
-          {product.productPhotosMobile.slice(1, 4).map((photo, index) => (
-            <div key={index}>
-              <Image
-                alt=""
-                src={photo.url}
-                width={327}
-                height={327}
-                layout="responsive"
-              />
-            </div>
-          ))}
-        </div>
+      <div className="flex flex-col p-[1.5rem]">
+        <p
+          className="p-4 self-start"
+          onClick={() => router.push(`/category/${product.category}`)}
+        >
+          Go Back
+        </p>
+        <ProductMainInfo product={product} />
+        <Features product={product} />
+        <InTheBox product={product} />
+        <ProductImages product={product} />
+        <RecommendationComp product={product} />
+        <CategoryList />
       </div>
     );
   }

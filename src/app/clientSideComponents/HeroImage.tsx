@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import ShopButton from "../libs/assetComponents/ShopButton";
 import ProductButton from "../libs/assetComponents/ProductButton";
+import Link from "next/link";
 
 type Props = {};
 
@@ -19,7 +20,9 @@ const HeroImage = (props: Props) => {
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>
-        <ProductButton />
+        <Link href={"/products/64e93f1e554082ca4fd8d899"}>
+          <ProductButton />
+        </Link>
       </div>
       <div className="lg:self-end lg:w-[55%]">
         <Image

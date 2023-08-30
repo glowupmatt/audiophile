@@ -12,6 +12,7 @@ export const GET = async (
       },
       select: {
         category: true,
+        id: true,
         name: true,
         description: true,
         price: true,

@@ -4,6 +4,8 @@ import ProductButton from "@/app/libs/assetComponents/ProductButton";
 import { ProductTypes } from "@/sampleData";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import RecommendProduct from "./RecommendProduct";
+import Link from "next/link";
 
 type Props = {
   product: ProductTypes;
@@ -25,6 +27,8 @@ const RecommendationComp = (props: Props) => {
     }
   }, []);
 
+  console.log(product);
+
   if (products) {
     const recommendedProducts: ProductTypes[] = products.filter((item) => {
       return item.name !== product.name && item.category === product.category;
@@ -44,49 +48,25 @@ const RecommendationComp = (props: Props) => {
           YOU MAY ALSO LIKE
         </h3>
         {recommendedProducts.length > 0 ? (
-          <div className="w-full">
+          <div className="w-full flex flex-col gap-[1.5rem] md:flex-row md:justify-center md:items-center">
             {recommendedProducts?.map((item, index) => {
               return (
-                <div
-                  key={index}
-                  className="w-full flex justify-center items-center flex-col gap-[1.5rem]"
-                >
-                  <div className="w-full bg-gray rounded-md flex items-center justify-center p-4">
-                    <Image
-                      alt=""
-                      src={item.categoryImageSizes[0].mobileUrl}
-                      width={100}
-                      height={100}
-                      className="rounded-md"
-                    />
-                  </div>
-                  <p>{item.name}</p>
-                  <ProductButton />
-                </div>
+                <Link href={`/products/${item.id}`} key={index}>
+                  <RecommendProduct item={item} />
+                </Link>
               );
             })}
           </div>
         ) : (
-          <div className="w-full">
+          <div className="w-full flex flex-col gap-[1.5rem] md:flex-row md:justify-center md:items-center">
             {recommendedProductsForCategoryWithOneProduct?.map(
-              (item, index) => (
-                <div
-                  key={index}
-                  className="w-full flex justify-center items-center flex-col gap-[1.5rem]"
-                >
-                  <div className="w-full bg-gray rounded-md flex items-center justify-center p-4">
-                    <Image
-                      alt=""
-                      src={item.categoryImageSizes[0].mobileUrl}
-                      width={100}
-                      height={100}
-                      className="rounded-md"
-                    />
-                  </div>
-                  <p>{item.name}</p>
-                  <ProductButton />
-                </div>
-              )
+              (item, index) => {
+                return (
+                  <Link href={`/products/${item.id}`} key={index}>
+                    <RecommendProduct item={item} />
+                  </Link>
+                );
+              }
             )}
           </div>
         )}

@@ -3,6 +3,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import ProductButtonTwo from "../libs/assetComponents/ProductButtonTwo";
 import ProductButtonBlack from "../libs/assetComponents/ProductButtonBlack";
+import Link from "next/link";
 
 type Props = {};
 
@@ -100,7 +101,9 @@ const BannerAds = (props: Props) => {
                       <p className="text-white opacity-[.8]">
                         {bannerAd.description}
                       </p>
-                      <ProductButtonBlack />
+                      <Link href={"/products/64e942cd554082ca4fd8d8d7"}>
+                        <ProductButtonBlack />
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -110,7 +113,9 @@ const BannerAds = (props: Props) => {
                     <h3 className="font-[700] text-[1.75rem] text-black">
                       {bannerAd.name}
                     </h3>
-                    <ProductButtonTwo />
+                    <Link href={"/products/64e94428554082ca4fd8d8ec"}>
+                      <ProductButtonTwo />
+                    </Link>
                   </div>
                   <Image
                     src={bannerAd.imageSizes.mobile.link}
@@ -161,7 +166,9 @@ const BannerAds = (props: Props) => {
                     <h3 className="font-[700] text-[1.75rem] text-black">
                       {bannerAd.name}
                     </h3>
-                    <ProductButtonTwo />
+                    <Link href={"/products/64e94535554082ca4fd8d903"}>
+                      <ProductButtonTwo />
+                    </Link>
                   </div>
                 </div>
               )}

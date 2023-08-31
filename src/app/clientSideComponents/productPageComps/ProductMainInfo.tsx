@@ -12,17 +12,24 @@ type Props = {
 export const ProductMainInfo = (props: Props) => {
   const { product } = props;
   return (
-    <div>
-      <div className="mb-[1.5rem] bg-gray w-full flex justify-center items-center rounded-md">
+    <div className="md:flex md:w-full md:justify-between md:items-center lg:justify-between lg:gap-[4rem]">
+      <div className="mb-[1.5rem] bg-gray w-full flex justify-center items-center rounded-md md:w-[17.5625rem] md:h-[30rem] lg:w-[30rem] lg:h-[35rem]">
         <Image
           alt=""
           src={product.productPhotosMobile[0].url}
           width={327}
           height={327}
-          className="rounded-md"
+          className="rounded-md md:hidden"
+        />
+        <Image
+          alt=""
+          src={product.productPhotosDesktop[0].url}
+          width={327}
+          height={327}
+          className="rounded-md hidden md:block"
         />
       </div>
-      <div className="flex flex-col gap-[1.5rem]">
+      <div className="flex flex-col gap-[1.5rem] md:w-[21.21875rem] lg:w-[27.84375rem]">
         <h2 className="text-[1.75rem] font-[700] tracking-[0.0625rem]">
           {product.name.toUpperCase()}
         </h2>

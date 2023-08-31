@@ -44,16 +44,18 @@ const ProductPage = (props: Props) => {
     return <LoadingState />;
   } else {
     return (
-      <div className="flex flex-col p-[1.5rem]">
+      <div className="flex flex-col p-[1.5rem] lg:p-[10rem]">
         <p
-          className="p-4 self-start"
+          className="p-4 self-start cursor-pointer"
           onClick={() => router.push(`/category/${product.category}`)}
         >
           Go Back
         </p>
         <ProductMainInfo product={product} />
-        <Features product={product} />
-        <InTheBox product={product} />
+        <div className="flex flex-col lg:flex-row lg:justify-evenly lg:w-full">
+          <Features product={product} />
+          <InTheBox product={product} />
+        </div>
         <ProductImages product={product} />
         <RecommendationComp product={product} />
         <CategoryList />

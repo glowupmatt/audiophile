@@ -5,7 +5,7 @@ type Props = {};
 
 const FooterBanner = (props: Props) => {
   return (
-    <div className="flex flex-col gap-7 items-center h-full justify-center p-6 md:h-[45rem] lg:flex-row-reverse lg:px-[10rem] lg:w-full lg:h-full">
+    <div className="flex flex-col gap-7 items-center h-full justify-center p-6 md:h-[45rem] lg:flex-row-reverse lg:px-[10rem] lg:w-full lg:h-full mb-[6rem]">
       <Image
         alt=""
         src={"/content/shared/mobile/image-best-gear.jpg"}
@@ -27,7 +27,7 @@ const FooterBanner = (props: Props) => {
         height={1096}
         className="rounded-md hidden lg:block h-full w-full"
       />
-      <div className="flex flex-col items-center gap-7 lg:w-[27.8125rem]">
+      <div className="flex flex-col items-center gap-7 lg:w-[27.8125rem] ">
         <h3 className="font-bold text-[1.75rem] text-center leading-[2rem] w-[90%] tracking-wide md:w-[35.8125rem] md:text-[2.5rem] md:leading-[3rem] lg:text-start lg:w-full">
           BRINGING YOU THE <span className="text-orange-default">BEST</span>{" "}
           AUDIO GEAR

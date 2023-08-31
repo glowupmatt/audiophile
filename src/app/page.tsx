@@ -9,7 +9,9 @@ export default function Home() {
     <main className="">
       <HeroImage />
       <div className="p-6 lg:px-[10rem] lg:py-6">
-        <CategoryList />
+        <div className="py-[7rem]">
+          <CategoryList />
+        </div>
         <BannerAds />
       </div>
     </main>

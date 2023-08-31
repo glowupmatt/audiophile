@@ -16,7 +16,7 @@ const NavHandler = (props: Props) => {
   return (
     <div>
       <button className="" onClick={() => setNavOpen((prev) => !prev)}>
-        {!navOpen ? (
+        {navOpen === false ? (
           <MenuIcon sx={{ color: blue[50] }} />
         ) : (
           <CloseIcon sx={{ color: blue[50] }} />

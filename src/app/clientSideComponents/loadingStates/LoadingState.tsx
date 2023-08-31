@@ -4,7 +4,7 @@ type Props = {};
 
 function LoadingState({}: Props) {
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen flex justify-center items-center w-screen">
       <div role="status">
         <svg
           aria-hidden="true"

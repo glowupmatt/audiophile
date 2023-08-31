@@ -27,8 +27,6 @@ const RecommendationComp = (props: Props) => {
     }
   }, []);
 
-  console.log(product);
-
   if (products) {
     const recommendedProducts: ProductTypes[] = products.filter((item) => {
       return item.name !== product.name && item.category === product.category;

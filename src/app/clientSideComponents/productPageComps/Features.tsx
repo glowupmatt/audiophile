@@ -7,8 +7,8 @@ type Props = {
 
 function Features({ product }: Props) {
   return (
-    <div className="flex flex-col gap-[1.5rem] mt-[6.44rem]">
-      <h3 className="text-[1.5rem] font-[700] leading-[2.25rem] tracking-[0.05356rem]">
+    <div className="flex flex-col gap-[1.5rem] mt-[6.44rem] lg:w-full">
+      <h3 className="text-[1.5rem] font-[700] leading-[2.25rem] tracking-[0.05356rem] md:text-start md:w-[50%] md:text-[2rem]">
         Features
       </h3>
       {product.features.map((feature, index) => (

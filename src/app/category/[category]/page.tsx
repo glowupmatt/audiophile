@@ -6,6 +6,7 @@ import ProductButton from "@/app/libs/assetComponents/ProductButton";
 import Link from "next/link";
 import CategoryList from "@/app/clientSideComponents/CategoryList";
 import LoadingState from "@/app/clientSideComponents/loadingStates/LoadingState";
+import classNames from "classnames";
 
 type Props = {
   params: {
@@ -60,33 +61,55 @@ const CategoryPage = (props: Props) => {
     }
   }, []);
   const selectedCategory = routerName.split("/")[2];
-  console.log(category);
 
   if (data.length === 0) {
     return <LoadingState />;
   } else {
     return (
-      <div>
-        <h2 className="text-center text-[1.75rem] font-[700] tracking-[0.125rem] text-white bg-black p-4">
+      <div className="w-full">
+        <h2 className="text-center text-[1.75rem] font-[700] tracking-[0.125rem] text-white bg-black p-4 lg:h-[10rem] lg:items-center lg:justify-center lg:flex">
           {`${selectedCategory.toUpperCase()}`}S
         </h2>
-        <div>
+        <div className=" lg:p-[10rem] lg:pt-0">
           {data
             .filter((product) => selectedCategory === product.category)
             .map((product, index) => {
               return (
-                <div key={product.id}>
-                  <div className="p-[1.5rem] mt-[4rem]">
+                <div
+                  key={product.id}
+                  className={classNames(
+                    "md:flex flex-col justify-center items-center lg:h-full lg:w-full lg:justify-between",
+                    { "lg:flex-row-reverse": index % 2 === 0 },
+                    { "lg:flex-row": index % 2 !== 0 }
+                  )}
+                >
+                  <div className="p-[1.5rem] mt-[4rem] md:h-[22rem] md:w-[43.0625rem] md:justify-center md:flex md:items-center lg:w-[33.75rem] lg:h-[35rem] ">
                     <Image
                       alt=""
                       src={product.categoryImageSizes[0].mobileUrl}
                       width={220}
                       height={243}
                       priority={true}
-                      className="h-auto w-full rounded"
+                      className="h-auto w-full rounded md:hidden"
+                    />
+                    <Image
+                      alt=""
+                      src={product.categoryImageSizes[0].tabletUrl}
+                      width={689}
+                      height={352}
+                      priority={true}
+                      className="h-auto w-full rounded hidden md:block self-center lg:hidden"
+                    />
+                    <Image
+                      alt=""
+                      src={product.categoryImageSizes[0].desktopUrl}
+                      width={540}
+                      height={560}
+                      priority={true}
+                      className="h-auto w-full rounded hidden self-center lg:block"
                     />
                   </div>
-                  <div className="flex flex-col items-center justify-center gap-[1.5rem] text-center p-[1.5rem] leading-none">
+                  <div className="flex flex-col items-center justify-center gap-[1.5rem] text-center p-[1.5rem] leading-none lg:w-[27.8125rem] lg:text-start lg:items-start">
                     {index === 0 ? (
                       <p className="text-orange-default tracking-[0.625rem] text-[0.875rem] font-[400]">
                         NEW PRODUCT
@@ -105,7 +128,7 @@ const CategoryPage = (props: Props) => {
                 </div>
               );
             })}
-          <div className="p-[1.5rem]">
+          <div className="p-[1.5rem] pt-[7rem]">
             <CategoryList />
           </div>
         </div>

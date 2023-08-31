@@ -6,6 +6,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { blue } from "@mui/material/colors";
 import Link from "next/link";
 import CategoryList from "../CategoryList";
+import CartInventory from "../CartInventory";
 
 type Props = {
   navOpen: boolean;
@@ -60,6 +61,12 @@ const NavBar = (props: Props) => {
       {/* prettier-ignore */}
       <div className={classNames("bg-white p-[2rem] pt-[5rem]  w-full absolute z-10", { "block": navOpen === true }, {"hidden": navOpen === false})} onClick={() => setNavOpen((prev) => !prev)}>
         <CategoryList />
+      </div>
+      {/* prettier-ignore */}
+      <div
+        className={classNames("flex justify-center items-center absolute z-10 h-[30.5rem] w-full p-[2rem]", { "block": cartOpened === true },{ "hidden": cartOpened === false })}
+      >
+        <CartInventory />
       </div>
     </div>
   );

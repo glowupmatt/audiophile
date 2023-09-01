@@ -1,59 +1,94 @@
 "use client";
-import { currencyFormatter } from "@/helperFunctions";
 import React from "react";
-import Image from "next/image";
-import { useSelector } from "react-redux";
-import { Product } from "../clientSideComponents/CartInventory";
+import CheckOutSummary from "../components/checkoutComps/CheckOutSummary";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type FormData = {
+  billingDetails: {
+    fullName: string;
+    email: string;
+    phoneNumber: string;
+  };
+  shippingInfo: {
+    address: string;
+    zipCode: string;
+    city: string;
+    country: string;
+  };
+  paymentDetails: {
+    emoney: boolean;
+    cashOnDelivery: boolean;
+  };
+  emoneyDetails: {
+    emoneyNumber: string;
+    emoneyPin: string;
+  };
+};
 
 type Props = {};
 
 const CheckoutPage = (props: Props) => {
-  const productsInCart = useSelector((state: any) => state.basket.basket);
-  const totalPrice = productsInCart.reduce(
-    (accumulator: number, product: Product) => {
-      const price = parseFloat(product.price);
-      const amount = product.amount;
-      const productTotal = price * amount;
-      return accumulator + productTotal;
-    },
-    0
-  );
+  const { register, setValue, handleSubmit } = useForm<FormData>();
+  const inputStyles =
+    "p-[.5rem] border-solid border-2 border-gray-300 rounded-xl w-full";
+  const labelStyles =
+    "text-[0.75rem] font-[700] text-gray-500 text-start self-start";
+
   return (
-    <section>
-      <form>
-        <div></div>
+    <section className="p-[1.5rem] flex flex-col gap-5">
+      <form className="bg-white rounded-md flex flex-col justify-center items-center gap-[1rem] p-[1rem]">
+        <h2 className="text-[1.125rem] font-[700] text-orange-default text-start self-start">
+          BILLING DETAILS
+        </h2>
+        <label className={labelStyles} htmlFor="fullName">
+          Full Name
+        </label>
+        <input
+          id="fullName"
+          defaultValue="John Doe"
+          className={inputStyles}
+          {...register("billingDetails.fullName", {
+            required: "This is required.",
+          })}
+        />
+        <label className={labelStyles} htmlFor="email">
+          Email Address
+        </label>
+        <input
+          id="email"
+          defaultValue="JohnDoe@mail.com"
+          className={inputStyles}
+          {...register("billingDetails.email", {
+            required: "This is required.",
+          })}
+        />
+        <label className={labelStyles} htmlFor="phoneNumber">
+          Phone Number
+        </label>
+        <input
+          id="phoneNumber"
+          defaultValue="202-555-0136"
+          className={inputStyles}
+          {...register("billingDetails.phoneNumber", {
+            required: "This is required.",
+          })}
+        />
+        <h2 className="text-[1.125rem] font-[700] text-orange-default text-start self-start">
+          SHIPPING INFO
+        </h2>
+        <label className={labelStyles} htmlFor="address">
+          Your Address
+        </label>
+        <input
+          id="address"
+          defaultValue="1137 Williams Avenue"
+          className={inputStyles}
+          {...register("shippingInfo.address", {
+            required: "This is required.",
+          })}
+        />
       </form>
-      <div className="flex flex-col p-4 gap-[1rem]">
-        <h2>SUMMARY</h2>
-        {productsInCart.map((product: any, index: number) => {
-          return (
-            <div
-              key={index}
-              className="flex w-full justify-between items-center gap-[1rem]"
-            >
-              <div className="h-[4rem] w-[4rem] relative flex items-center justify-center">
-                <Image
-                  src={product.image}
-                  alt=""
-                  width={100}
-                  height={100}
-                  className="rounded"
-                />
-              </div>
-              <div className="flex flex-col h-full justify-between">
-                <p className="text-[0.9375rem] font-[700]">{product.name}</p>
-                <p className="text-[0.875rem] font-[700] opacity-[.7]">
-                  {currencyFormatter(product.price)}
-                </p>
-              </div>
-              <p>x{product.amount}</p>
-            </div>
-          );
-        })}
-        <div>
-          <p>GRAND TOTAL: {currencyFormatter(totalPrice)}</p>
-        </div>
-      </div>
+      <CheckOutSummary />
     </section>
   );
 };

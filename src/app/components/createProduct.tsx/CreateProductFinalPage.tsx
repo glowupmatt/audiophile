@@ -13,7 +13,6 @@ type Props = {
 
 const CreateProductFinalPage = (props: Props) => {
   const { product } = props;
-  console.log(product);
   const router = useRouter();
 
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {

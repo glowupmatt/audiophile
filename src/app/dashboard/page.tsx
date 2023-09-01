@@ -62,7 +62,6 @@ const Dashboard = () => {
     getProducts();
   }, []);
   const userName = session.data?.user?.name;
-  console.log(data);
   return (
     <div>
       <DashBoardHeader setOpen={setOpen} open={open} userName={userName} />

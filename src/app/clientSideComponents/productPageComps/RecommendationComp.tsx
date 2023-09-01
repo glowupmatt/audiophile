@@ -38,8 +38,6 @@ const RecommendationComp = (props: Props) => {
       }
     );
 
-    console.log(recommendedProducts);
-
     return (
       <div className="flex flex-col gap-[3.3rem] justify-center items-center mt-[5rem]">
         <h3 className="text-[1.5rem] font-[700] leading-[2.25rem] tracking-[0.05356rem]">

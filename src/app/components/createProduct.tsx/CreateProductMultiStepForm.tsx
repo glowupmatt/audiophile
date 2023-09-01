@@ -53,8 +53,6 @@ const CreateProductMultiStepForm = (props: Props) => {
     },
   });
 
-  console.log(product);
-
   const pageDirectory = [
     {
       pageNumber: 0,

@@ -12,7 +12,6 @@ type Props = {
 const ProductPage = (props: Props) => {
   const { params } = props;
   const router = useRouter();
-  console.log(params);
   useEffect(() => {
     const getProduct = async () => {
       try {

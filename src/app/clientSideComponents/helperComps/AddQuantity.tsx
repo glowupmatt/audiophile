@@ -23,15 +23,15 @@ const AddQuantity = (props: Props) => {
   };
 
   return (
-    <div className="w-[7.5rem] h-[3rem] bg-[gray] text-white flex flex-row justify-center items-center">
-      <div className="w-full" onClick={removeQuantity}>
+    <div className="w-full p-4 gap-4 h-[3rem] bg-[gray] text-white flex flex-row justify-center items-center max-w-[7rem]">
+      <div
+        className="w-full flex justify-start items-end"
+        onClick={removeQuantity}
+      >
         <RemoveIcon sx={{ width: 15 }} />
       </div>
       <p>{quantity}</p>
-      <div
-        className="w-full items-start flex justify-center"
-        onClick={addQuantity}
-      >
+      <div className="w-full flex justify-end items-end" onClick={addQuantity}>
         <AddIcon sx={{ width: 15 }} />
       </div>
     </div>

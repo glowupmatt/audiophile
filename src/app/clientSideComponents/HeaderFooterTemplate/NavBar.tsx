@@ -17,8 +17,7 @@ type Props = {
 
 const NavBar = (props: Props) => {
   const { navOpen, setNavOpen, cartOpened, setCartOpened } = props;
-  console.log(cartOpened);
-  console.log(navOpen);
+
   return (
     <div className="w-full h-full">
       <nav className="bg-black w-full flex justify-between items-center p-4 md:gap-[3rem] lg:h-[6rem] lg:px-[10rem]">
@@ -66,7 +65,7 @@ const NavBar = (props: Props) => {
       <div
         className={classNames("flex justify-center items-center absolute z-10 h-[30.5rem] w-full p-[2rem] md:justify-end", { "block": cartOpened === true },{ "hidden": cartOpened === false })}
       >
-        <CartInventory />
+        <CartInventory setCartOpened={setCartOpened}/>
       </div>
     </div>
   );

@@ -6,7 +6,9 @@ import { currencyFormatter } from "@/helperFunctions";
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = {};
+type Props = {
+  setCartOpened: React.Dispatch<React.SetStateAction<boolean>>;
+};
 export type Product = {
   name: string;
   price: string;
@@ -15,6 +17,7 @@ export type Product = {
 };
 
 const CartInventory = (props: Props) => {
+  const { setCartOpened } = props;
   const productsInCart = useSelector((state: any) => state.basket.basket);
   const totalPrice = productsInCart.reduce(
     (accumulator: number, product: Product) => {
@@ -52,11 +55,17 @@ const CartInventory = (props: Props) => {
             </div>
           );
         })}
-        <div className="flex justify-center w-full gap-[1rem]">
-          <p>Total Price</p>
-          <p>{currencyFormatter(totalPrice)}</p>
+        <div className="flex justify-between w-full gap-[1rem]">
+          <p className=" font-[500] leading-[1.5625rem]">Total Price</p>
+          <p className="text-[1.125rem] font-[700]">
+            {currencyFormatter(totalPrice)}
+          </p>
         </div>
-        <Link href={"/checkout"}>
+        <Link
+          href={"/checkout"}
+          className="w-full"
+          onClick={() => setCartOpened(false)}
+        >
           <button className="w-full h-[3rem] px-[1rem] bg-orange-default hover:bg-orange-light">
             <p className="text-white font-semibold text-[13px]">CHECKOUT</p>
           </button>

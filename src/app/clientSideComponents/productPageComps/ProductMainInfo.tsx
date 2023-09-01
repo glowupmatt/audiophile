@@ -20,8 +20,10 @@ export const ProductMainInfo = (props: Props) => {
   const { name, price, categoryImageSizes } = product;
   const image = categoryImageSizes.filter((image) => image.desktopUrl);
   const dispatch = useDispatch();
+  const [submitted, setSubmitted] = useState(false);
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitted(true);
     dispatch(
       addToBasket({
         name: name,
@@ -61,7 +63,7 @@ export const ProductMainInfo = (props: Props) => {
           <p className="text-[1.125rem] font-[700] leading-[0.08038rem]">
             {currencyFormatter(product.price)}
           </p>
-          <form onSubmit={onSubmitHandler}>
+          <form onSubmit={onSubmitHandler} className="w-full">
             <div className="flex flex-row w-full gap-5">
               <AddQuantity
                 product={product}
@@ -69,15 +71,23 @@ export const ProductMainInfo = (props: Props) => {
                 setQuantity={setQuantity}
               />
 
-              <button
-                type={"submit"}
-                disabled={quantity === 0 ? true : false}
-                className="w-full h-[3rem] bg-orange-default hover:bg-orange-light"
-              >
-                <p className="text-white font-semibold text-[13px]">
-                  ADD TO CART
-                </p>
-              </button>
+              {submitted === false ? (
+                <button
+                  type={"submit"}
+                  disabled={quantity === 0 ? true : false}
+                  className="w-full h-[3rem] bg-orange-default hover:bg-orange-light"
+                >
+                  <p className="text-white font-semibold text-[13px]">
+                    ADD TO CART
+                  </p>
+                </button>
+              ) : (
+                <div className="w-full h-[3rem] bg-orange-default hover:bg-orange-light flex justify-center items-center">
+                  <p className="text-white font-semibold text-[13px]">
+                    ADDED TO CART
+                  </p>
+                </div>
+              )}
             </div>
           </form>
         </div>

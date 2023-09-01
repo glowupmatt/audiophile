@@ -1,12 +1,16 @@
+"use client";
+
 import React from "react";
 import { categoriesArray } from "../CategoryList";
 import Link from "next/link";
 import Image from "next/image";
 import FooterBanner from "../FooterBanner";
+import { usePathname } from "next/navigation";
 
 type Props = {};
 
 const Footer = (props: Props) => {
+  const pathName = usePathname();
   const socialLinks = [
     {
       socialIcon: "/content/shared/desktop/icon-facebook.svg",
@@ -21,9 +25,10 @@ const Footer = (props: Props) => {
       link: "https://www.instagram.com/",
     },
   ];
+
   return (
     <div className="w-full">
-      <FooterBanner />
+      {pathName === "/checkout" ? null : <FooterBanner />}
       <footer className="bg-black text-white p-8 flex flex-col justify-center items-center lg:p-[4rem]">
         <div className="w-full text-center md:text-start lg:flex lg:flex-row lg:items-center lg:justify-between">
           <h2 className="text-white text-[1.5rem] font-[700]  md:self-start md:py-[1rem] lg:p-0 lg:self-center">
@@ -31,7 +36,7 @@ const Footer = (props: Props) => {
           </h2>
           <div className="flex flex-col gap-6 py-4 lg:p-0">
             <ul className="flex flex-col justify-center items-center gap-6 text-white md:flex-row md:items-start md:self-start lg:self-center">
-              <Link href="/" className="font-bold">
+              <Link href="/" className="font-bold hover:text-orange-default">
                 HOME
               </Link>
               {categoriesArray.map((category) => {
@@ -39,7 +44,7 @@ const Footer = (props: Props) => {
                   <Link
                     href={`category/${category.link}`}
                     key={category.name}
-                    className="font-bold"
+                    className="font-bold hover:text-orange-default"
                   >
                     {category.name}
                   </Link>
@@ -66,6 +71,7 @@ const Footer = (props: Props) => {
                       alt=""
                       width={25}
                       height={25}
+                      className=""
                     />
                   </Link>
                 );

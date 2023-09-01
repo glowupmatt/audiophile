@@ -40,6 +40,7 @@ const ProductPage = (props: Props) => {
       console.log(error);
     }
   }, [productId]);
+
   if (!product) {
     return <LoadingState />;
   } else {

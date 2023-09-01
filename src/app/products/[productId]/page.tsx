@@ -58,7 +58,9 @@ const ProductPage = (props: Props) => {
         </div>
         <ProductImages product={product} />
         <RecommendationComp product={product} />
-        <CategoryList />
+        <div className="pt-[7rem]">
+          <CategoryList />
+        </div>
       </div>
     );
   }

@@ -2,11 +2,19 @@
 import React, { useState, useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { useDispatch, useSelector } from "react-redux";
+import { ProductTypes } from "@/sampleData";
+import { initialStateType } from "@/app/redux/createSlices";
 
-type Props = {};
+type Props = {
+  product: ProductTypes;
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+};
 
 const AddQuantity = (props: Props) => {
-  const [quantity, setQuantity] = useState(0);
+  const { product, quantity, setQuantity } = props;
+
   const addQuantity = () => {
     setQuantity((prev) => prev + 1);
   };
@@ -16,17 +24,16 @@ const AddQuantity = (props: Props) => {
 
   return (
     <div className="w-[7.5rem] h-[3rem] bg-[gray] text-white flex flex-row justify-center items-center">
-      <button
-        className="w-full"
-        disabled={quantity === 0 ? true : false}
-        onClick={removeQuantity}
-      >
+      <div className="w-full" onClick={removeQuantity}>
         <RemoveIcon sx={{ width: 15 }} />
-      </button>
+      </div>
       <p>{quantity}</p>
-      <button className="w-full" onClick={addQuantity}>
+      <div
+        className="w-full items-start flex justify-center"
+        onClick={addQuantity}
+      >
         <AddIcon sx={{ width: 15 }} />
-      </button>
+      </div>
     </div>
   );
 };

@@ -20,12 +20,21 @@ const FooterBanner = (props: Props) => {
         height={766}
         className="rounded-md hidden md:block lg:hidden"
       />
+      <div className="xl:hidden">
+        <Image
+          alt=""
+          src={"/content/shared/desktop/image-best-gear.jpg"}
+          width={1644}
+          height={1096}
+          className="rounded-md hidden lg:block h-full w-full max-w-[33.75rem] max-h-[36.75rem]"
+        />
+      </div>
       <Image
         alt=""
         src={"/content/shared/desktop/image-best-gear.jpg"}
         width={1644}
         height={1096}
-        className="rounded-md hidden lg:block h-full w-full"
+        className="rounded-md hidden h-full w-full max-w-[33.75rem] max-h-[36.75rem] lg:hidden xl:block"
       />
       <div className="flex flex-col items-center gap-7 lg:w-[27.8125rem] ">
         <h3 className="font-bold text-[1.75rem] text-center leading-[2rem] w-[90%] tracking-wide md:w-[35.8125rem] md:text-[2.5rem] md:leading-[3rem] lg:text-start lg:w-full">

@@ -18,12 +18,12 @@ const HeaderFooterTemplate = (props: Props) => {
     <Provider store={store}>
       <div className="flex justify-center items-center flex-col">
         <div
-          className={classNames("max-w-[90rem] w-screen relative", {
+          className={classNames("w-screen relative", {
             "md:overflow-hidden md:h-screen":
               navOpen === true || cartOpened === true,
           })}
         >
-          <div className="">
+          <div className="w-screen bg-black">
             <NavBar
               navOpen={navOpen}
               setNavOpen={setNavOpen}
@@ -32,12 +32,12 @@ const HeaderFooterTemplate = (props: Props) => {
             />
           </div>
           <div
-            className={classNames("", {
+            className={classNames("flex flex-col justify-center items-center", {
               " inset-0 bg-gray opacity-50 blur-xl":
                 navOpen === true || cartOpened === true,
             })}
           >
-            {children}
+            <div>{children}</div>
           </div>
           <Footer />
         </div>

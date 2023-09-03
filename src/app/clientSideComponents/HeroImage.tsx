@@ -8,8 +8,8 @@ type Props = {};
 
 const HeroImage = (props: Props) => {
   return (
-    <div className="relative flex flex-col justify-center md:items-center lg:bg-black lg:h-[45.5625rem] lg:overflow-hidden lg:gap-[2rem] lg:px-[5rem] xl:px-[9rem]">
-      <div className="absolute flex flex-col justify-between items-center text-center h-[23rem] p-[1.5rem] md:w-[23.6875rem] md:gap-[2rem] md:h-full md:p-0 md:justify-center lg:self-start lg:text-start lg:items-start">
+    <div className="relative flex flex-col justify-center md:items-center lg:bg-black lg:h-[45.5625rem] lg:overflow-hidden lg:gap-[2rem] lg:px-[5rem] xl:px-[9rem] max-w-[90rem] lg:flex-row">
+      <div className="absolute flex flex-col justify-between items-center text-center h-[23rem] p-[1.5rem] md:w-[23.6875rem] md:gap-[2rem] md:h-full md:p-0 md:justify-center lg:self-start lg:text-start lg:items-start lg:relative">
         <p className="tracking-[.7rem] text-gray opacity-[.6] font-[200]">
           NEW PRODUCT
         </p>

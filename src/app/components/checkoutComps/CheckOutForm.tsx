@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type FormData = {
@@ -62,6 +62,7 @@ const CheckOutForm = (props: Props) => {
                 className={inputStyles}
                 {...register("billingDetails.fullName", {
                   required: "This is required.",
+                  pattern: /^[A-Za-z\s]+$/,
                 })}
               />
             </div>
@@ -75,6 +76,7 @@ const CheckOutForm = (props: Props) => {
                 className={inputStyles}
                 {...register("billingDetails.email", {
                   required: "This is required.",
+                  pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                 })}
               />
             </div>
@@ -88,6 +90,7 @@ const CheckOutForm = (props: Props) => {
                 className={inputStyles}
                 {...register("billingDetails.phoneNumber", {
                   required: "This is required.",
+                  pattern: /^\d{3}-\d{3}-\d{4}$/,
                 })}
               />
             </div>
@@ -108,6 +111,7 @@ const CheckOutForm = (props: Props) => {
                 className={inputStyles}
                 {...register("shippingInfo.address", {
                   required: "This is required.",
+                  pattern: /^[A-Za-z0-9\s.,'-]+$/,
                 })}
               />
             </div>
@@ -121,6 +125,7 @@ const CheckOutForm = (props: Props) => {
                 className={inputStyles}
                 {...register("shippingInfo.zipCode", {
                   required: "This is required.",
+                  pattern: /^\d{5}(?:-\d{4})?$/,
                 })}
               />
             </div>
@@ -134,6 +139,7 @@ const CheckOutForm = (props: Props) => {
                 className={inputStyles}
                 {...register("shippingInfo.city", {
                   required: "This is required.",
+                  pattern: /^[A-Za-z\s.'-]+$/,
                 })}
               />
             </div>
@@ -167,6 +173,7 @@ const CheckOutForm = (props: Props) => {
                 className={inputStyles}
                 {...register("emoneyDetails.emoneyNumber", {
                   required: "This is required.",
+                  pattern: /^\d{16}$/,
                 })}
               />
             </div>
@@ -180,6 +187,7 @@ const CheckOutForm = (props: Props) => {
                 className={inputStyles}
                 {...register("emoneyDetails.emoneyPin", {
                   required: "This is required.",
+                  pattern: /^\d{4,6}$/,
                 })}
               />
             </div>

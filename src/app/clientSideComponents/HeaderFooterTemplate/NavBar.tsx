@@ -19,7 +19,7 @@ const NavBar = (props: Props) => {
   const { navOpen, setNavOpen, cartOpened, setCartOpened } = props;
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full mx-auto max-w-[90rem]">
       <nav className="bg-black w-full flex justify-between items-center p-4 md:gap-[3rem] lg:h-[6rem] lg:px-[10rem]">
         <div className="lg:hidden">
           <NavHandler navOpen={navOpen} setNavOpen={setNavOpen} />

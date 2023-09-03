@@ -1,10 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { currencyFormatter } from "@/helperFunctions";
 import Image from "next/image";
 import Link from "next/link";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import { useDispatch } from "react-redux";
+import { addAmount, removeOne, removeAll } from "../redux/createSlices";
 
 type Props = {
   setCartOpened: React.Dispatch<React.SetStateAction<boolean>>;
@@ -19,6 +23,7 @@ export type Product = {
 const CartInventory = (props: Props) => {
   const { setCartOpened } = props;
   const productsInCart = useSelector((state: any) => state.basket.basket);
+  const dispatch = useDispatch();
   const totalPrice = productsInCart.reduce(
     (accumulator: number, product: Product) => {
       const price = parseFloat(product.price);
@@ -29,14 +34,35 @@ const CartInventory = (props: Props) => {
     0
   );
 
+  const removeAllHandler = () => {
+    dispatch(removeAll({}));
+  };
+
   return (
     <div className="flex justify-center items-center bg-white h-full w-full rounded-md p-4 md:w-[23.5625rem]">
       <section className="flex flex-col justify-between items-center h-full w-full">
         <div className="flex justify-between items-center w-full">
           <h3>Cart ({productsInCart.length})</h3>
-          <p>Remove All</p>
+          <button onClick={removeAllHandler}>
+            <p>Remove All</p>
+          </button>
         </div>
         {productsInCart.map((product: any, index: number) => {
+          const addExtraHandler = () => {
+            dispatch(
+              addAmount({
+                name: product.name,
+              })
+            );
+          };
+          const removeExtraHandler = () => {
+            dispatch(
+              removeOne({
+                name: product.name,
+              })
+            );
+          };
+          console.log(productsInCart.map((product: any) => product.amount));
           return (
             <div
               key={index}
@@ -51,7 +77,22 @@ const CartInventory = (props: Props) => {
                   {currencyFormatter(product.price)}
                 </p>
               </div>
-              <p>{product.amount}</p>
+              <div className="w-full p-4 gap-4 h-[3rem] bg-[gray] text-white flex flex-row justify-center items-center max-w-[7rem]">
+                <button
+                  onClick={removeExtraHandler}
+                  disabled={product.amount === 0}
+                  className="w-full flex justify-start items-end"
+                >
+                  <RemoveIcon sx={{ width: 15 }} />
+                </button>
+                <p>{product.amount}</p>
+                <button
+                  onClick={addExtraHandler}
+                  className="w-full flex justify-end items-end"
+                >
+                  <AddIcon sx={{ width: 15 }} />
+                </button>
+              </div>
             </div>
           );
         })}

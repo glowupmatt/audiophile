@@ -18,10 +18,40 @@ export const basketSlice = createSlice({
   initialState,
   reducers: {
     addToBasket: (state, action) => {
-      state.basket.push(action.payload);
+      const productToAdd = action.payload;
+      const existingProduct = state.basket.find(
+        (item) => item.name === productToAdd.name
+      );
+      if (existingProduct) {
+        existingProduct.amount += productToAdd.amount;
+      } else {
+        state.basket.push(productToAdd);
+      }
+    },
+    addAmount: (state, action) => {
+      const addOneToProduct = action.payload;
+      state.basket.map((item) => {
+        if (item.name === addOneToProduct.name) {
+          item.amount += 1;
+        }
+      });
+    },
+    removeOne: (state, action) => {
+      const removeOneFromProduct = action.payload;
+      state.basket.map((item) => {
+        if (item.name === removeOneFromProduct.name) {
+          item.amount -= 1;
+        }
+      });
+    },
+    removeAll: (state, action) => {
+      if (state.basket.length > 0) {
+        state.basket = [];
+      }
     },
   },
 });
 
-export const { addToBasket } = basketSlice.actions;
+export const { addToBasket, addAmount, removeOne, removeAll } =
+  basketSlice.actions;
 export default basketSlice.reducer;

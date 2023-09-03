@@ -63,7 +63,7 @@ const NavBar = (props: Props) => {
       </div>
       {/* prettier-ignore */}
       <div
-        className={classNames("flex justify-center items-center absolute z-10 h-[30.5rem] w-full p-[2rem] md:justify-end", { "block": cartOpened === true },{ "hidden": cartOpened === false })}
+        className={classNames("flex justify-center items-center absolute z-10 h-[30.5rem] w-full p-[2rem] md:justify-end max-w-[90rem]", { "block": cartOpened === true },{ "hidden": cartOpened === false })}
       >
         <CartInventory setCartOpened={setCartOpened}/>
       </div>

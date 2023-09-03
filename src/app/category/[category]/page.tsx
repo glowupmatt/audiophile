@@ -66,11 +66,11 @@ const CategoryPage = (props: Props) => {
     return <LoadingState />;
   } else {
     return (
-      <div className="w-full">
-        <h2 className="text-center text-[1.75rem] font-[700] tracking-[0.125rem] text-white bg-black p-4 lg:h-[10rem] lg:items-center lg:justify-center lg:flex">
+      <div className="w-full flex flex-col justify-center items-center">
+        <h2 className="text-center text-[1.75rem] font-[700] tracking-[0.125rem] text-white bg-black p-4 lg:h-[10rem] lg:items-center lg:justify-center lg:flex w-screen">
           {`${selectedCategory.toUpperCase()}`}S
         </h2>
-        <div className=" lg:p-[10rem] lg:pt-0">
+        <div className=" lg:pt-0 max-w-[90rem]">
           {data
             .filter((product) => selectedCategory === product.category)
             .map((product, index) => {

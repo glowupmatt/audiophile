@@ -45,7 +45,7 @@ const ProductPage = (props: Props) => {
     return <LoadingState />;
   } else {
     return (
-      <div className="flex flex-col p-[1.5rem] lg:p-[10rem] max-w-[90rem]">
+      <div className="flex flex-col p-[1.5rem] max-w-[90rem]">
         <p
           className="p-4 self-start cursor-pointer"
           onClick={() => router.push(`/category/${product.category}`)}

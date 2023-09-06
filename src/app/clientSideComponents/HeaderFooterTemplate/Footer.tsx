@@ -43,7 +43,7 @@ const Footer = (props: Props) => {
                 {categoriesArray.map((category) => {
                   return (
                     <Link
-                      href={`category/${category.link}`}
+                      href={`/category/${category.link}`}
                       key={category.name}
                       className="font-bold hover:text-orange-default"
                     >

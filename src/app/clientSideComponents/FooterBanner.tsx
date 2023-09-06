@@ -5,7 +5,7 @@ type Props = {};
 
 const FooterBanner = (props: Props) => {
   return (
-    <div className="flex flex-col gap-7 items-center h-full justify-center p-6 md:h-[45rem] lg:flex-row-reverse lg:px-[10rem] lg:w-full lg:h-full mb-[6rem]">
+    <div className="flex flex-col gap-7 items-center h-full justify-center p-6 md:h-[45rem] lg:flex-row-reverse lg:w-full lg:h-full mb-[6rem] lg:max-w-[62.375rem]">
       <Image
         alt=""
         src={"/content/shared/mobile/image-best-gear.jpg"}

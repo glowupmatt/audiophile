@@ -20,7 +20,7 @@ const RecommendProduct = (props: Props) => {
           className="rounded-md md:hidden w-[50%]"
         />
       </div>
-      <div className="md:relative md:bg-gray md:w-[13.9375rem] md:h-[19.875rem] md:rounded-md md:flex md:justify-center md:items-center lg:w-[21.875rem] lg:h-[19.875rem]">
+      <div className="md:relative md:bg-gray md:w-[13.9375rem] md:h-[19.875rem] md:rounded-md md:flex md:justify-center md:items-center lg:w-[13.9375rem] lg:h-full xl:w-[21.875rem] xl:h-[19.875rem]">
         <Image
           alt=""
           src={item.categoryImageSizes[0].desktopUrl}

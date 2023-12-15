@@ -3,7 +3,7 @@
 import LoadingState from "@/app/clientSideComponents/loadingStates/LoadingState";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { sampleData } from "@/sampleData";
+import { motion } from "framer-motion";
 import { ProductTypes } from "@/sampleData";
 import { useRouter } from "next/navigation";
 import { ProductMainInfo } from "@/app/clientSideComponents/productPageComps/ProductMainInfo";
@@ -45,7 +45,11 @@ const ProductPage = (props: Props) => {
     return <LoadingState />;
   } else {
     return (
-      <div className="flex flex-col p-[1.5rem] max-w-[90rem]">
+      <motion.div 
+      initial={{ opacity: "0" }}
+      animate={{ opacity: "100%" }}
+      transition={{ duration: 0.9 }}
+      className="flex flex-col p-[1.5rem] max-w-[90rem]">
         <p
           className="p-4 self-start cursor-pointer"
           onClick={() => router.push(`/category/${product.category}`)}
@@ -62,7 +66,7 @@ const ProductPage = (props: Props) => {
         <div className="pt-[7rem]">
           <CategoryList />
         </div>
-      </div>
+      </motion.div>
     );
   }
 };

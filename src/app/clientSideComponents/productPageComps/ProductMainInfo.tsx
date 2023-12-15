@@ -35,7 +35,7 @@ export const ProductMainInfo = (props: Props) => {
   };
 
   return (
-    <div className="md:flex md:w-full md:justify-between md:items-center lg:justify-between lg:gap-[4rem]">
+    <div className="md:flex md:w-full md:justify-between md:items-center lg:justify-evenly lg:gap-[4rem]">
       <div className="mb-[1.5rem] bg-gray w-full flex justify-center items-center rounded-md md:w-[17.5625rem] md:h-[30rem] lg:w-[30rem] lg:h-[35rem]">
         <Image
           alt=""

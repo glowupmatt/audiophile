@@ -1,7 +1,10 @@
+'use client'
+
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 import ShopButton from "../libs/assetComponents/ShopButton";
 import Link from "next/link";
+import { useInView } from "framer-motion";
 
 type Props = {};
 
@@ -23,8 +26,16 @@ export const categoriesArray = [
   },
 ];
 const CategoryList = (props: Props) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
-    <section className="">
+    <section 
+    ref={ref}
+    style={{
+      opacity: isInView ? 1 : 0,
+      transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+    }} 
+    >
       <div className="flex flex-col gap-[4rem] md:flex-row md:gap-[1rem] lg:items-center lg:justify-center">
         {categoriesArray.map((category) => {
           return (

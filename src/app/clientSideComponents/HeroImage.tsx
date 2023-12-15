@@ -1,14 +1,26 @@
-import React from "react";
+'use client'
+
+import React, {useRef} from "react";
 import Image from "next/image";
 import ShopButton from "../libs/assetComponents/ShopButton";
 import ProductButton from "../libs/assetComponents/ProductButton";
+import { useInView } from "framer-motion";
 import Link from "next/link";
 
 type Props = {};
 
 const HeroImage = (props: Props) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false });
+
   return (
-    <div className="relative flex flex-col justify-center md:items-center lg:bg-black lg:h-[45.5625rem] lg:overflow-hidden lg:gap-[2rem] lg:px-[5rem] xl:px-[9rem] max-w-[90rem] lg:flex-row">
+    <div 
+      ref={ref}
+      style={{
+        opacity: isInView ? 1 : 0,
+        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+      }} 
+      className="relative flex flex-col justify-center md:items-center lg:bg-black lg:h-[45.5625rem] lg:overflow-hidden lg:gap-[2rem] lg:px-[5rem] xl:px-[9rem] max-w-[90rem] lg:flex-row">
       <div className="absolute flex flex-col justify-between items-center text-center h-[23rem] p-[1.5rem] md:w-[23.6875rem] md:gap-[2rem] md:h-full md:p-0 md:justify-center lg:self-start lg:text-start lg:items-start lg:relative">
         <p className="tracking-[.7rem] text-gray opacity-[.6] font-[200]">
           NEW PRODUCT
